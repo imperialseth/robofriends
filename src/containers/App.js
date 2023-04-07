@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import CardList from "./CardList";
-import SearchBox from "./SearchBox";
-import Scroll from "./Scroll";
-import "./App.css";
+import CardList from "../components/CardList";
+import SearchBox from "../components/SearchBox";
+import Scroll from "../components/Scroll";
+import "../containers/App.css";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 // const state = {
 // 	robots: robots,
@@ -44,7 +45,9 @@ componentDidMount() {
 					<h1 className="f1">Automated Friends</h1>
 					<SearchBox searchChange={this.onSearchChange} />
 					<Scroll>
-						<CardList robots={filteredRobots} />
+						<ErrorBoundary>
+							<CardList robots={filteredRobots} />
+						</ErrorBoundary>
 					</Scroll>
 				</div>
 			);
